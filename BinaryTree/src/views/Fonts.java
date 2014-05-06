@@ -3,7 +3,7 @@
  * created 5.6.14  last updated 5.6.14
  * CS 182 Lab Project 5 Binary Tree Display
  * 
- * This class contains the fonts that will be used in the GUI display
+ * This class contains the fonts that will be used in the GUI display.
  */
 
 package views;

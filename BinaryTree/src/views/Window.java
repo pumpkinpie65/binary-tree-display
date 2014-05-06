@@ -3,12 +3,11 @@
  * created 5.6.14  last updated 5.6.14
  * CS 182 Lab Project 5 Binary Tree Display
  * 
- * This class extends Node to create a node with data for a binary tree.
+ * This class creates a window to display the binary tree
  */
 
 package views;
 
-import java.awt.Font;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

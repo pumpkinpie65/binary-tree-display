@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import models.BinaryTree;
 
 /**
  *
@@ -34,9 +35,8 @@ public class Window extends JFrame implements ActionListener {
     private BTreePanel centerPanel;
     private static final int WINWIDTH = 700;
     private static final int WINHEIGHT = 500;
-    /*   UNCOMMENT WHEN YOU HAVE THE TREE CODE
-    private Tree theTree = new Tree();
-    */
+    /*   UNCOMMENT WHEN YOU HAVE THE TREE CODE */
+    private BinaryTree theTree = new BinaryTree();
 
 
     ////////////MAIN////////////////////////
@@ -74,7 +74,7 @@ public class Window extends JFrame implements ActionListener {
 
 
 
-    /*   UNCOMMENT WHEN YOU HAVE THE TREE CODE
+    /*   UNCOMMENT WHEN YOU HAVE THE TREE CODE*/
           theTree.insert(50, 1.5);
           theTree.insert(25, 1.2);
           theTree.insert(75, 1.7);
@@ -87,7 +87,7 @@ public class Window extends JFrame implements ActionListener {
           theTree.insert(93, 1.5);
           theTree.insert(97, 1.5);
           theTree.displayTree();
-    */
+    
           setSize(WINWIDTH,WINHEIGHT);
           setLocation(winxpos,winypos);
           setVisible(true);

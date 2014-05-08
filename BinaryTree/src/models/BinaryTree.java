@@ -23,6 +23,11 @@ public class BinaryTree {
         root = null;
     }
     
+    public DataNode getRoot()
+    {
+        return root;
+    }
+    
     public DataNode find(int searchKey)
     {
         DataNode current = root;

@@ -72,6 +72,8 @@ public class Window extends JFrame implements ActionListener {
            centerPanel = new BTreePanel();
            getContentPane().add("Center",centerPanel);
 
+           //mine\/\/\/
+           centerPanel.setBinaryTree(theTree);
 
 
     /*   UNCOMMENT WHEN YOU HAVE THE TREE CODE*/

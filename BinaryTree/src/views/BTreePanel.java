@@ -76,12 +76,36 @@ public class BTreePanel extends JPanel {
   
   public void displayBTree(Graphics g, DataNode node, int x, int y, int level)
   {
-      if (level == 1)
+      /*if (level == 1)
       {
           drawCenteredCircle(g, x, y, 24);
           drawLeftChildLine(g, x, y);
           drawRightChildLine(g, x, y);
           drawDataInCircle(g, "" + node.dData, x, y, 24);
+      }*/
+      
+      //need to do inOrder traversal
+      
+      print("leftChild is null: " + (node.leftChild == null));
+      
+      while (node.leftChild != null)
+      {
+          print("in leftChild loop");
+          drawCenteredCircle(g, x, y, 24);
+          drawLeftChildLine(g, x, y);
+          drawRightChildLine(g, x, y);
+          drawDataInCircle(g, "" + node.dData, x, y, 24);
+          displayBTree(g, (DataNode) node.leftChild, x / 2, y + 30, ++level);
+      }
+      
+      while (node.rightChild != null)
+      {
+          print("in rightChild loop");
+          drawCenteredCircle(g, x, y, 24);
+          drawLeftChildLine(g, x, y);
+          drawRightChildLine(g, x, y);
+          drawDataInCircle(g, "" + node.dData, x, y, 24);
+          displayBTree(g, (DataNode) node.rightChild, x / 2, y + 30, ++level);
       }
   }
   
@@ -114,8 +138,13 @@ public class BTreePanel extends JPanel {
    {
        x = x - (d / 2);
        //y = y - d;
-       y = y + (d / 3);
+       y = y + (d / 4);
        g.setColor(Color.BLACK);
        g.drawString(string, x, y);
+   }
+   
+   private void print(String message)
+   {
+       System.out.println(message);
    }
 }

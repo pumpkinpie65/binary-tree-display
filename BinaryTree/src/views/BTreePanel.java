@@ -67,7 +67,7 @@ public class BTreePanel extends JPanel {
          if (bTree != null)
          {
             int x = getWidth() / 2;
-            int y =  getHeight() - (getHeight() - 20);
+            int y =  getHeight() - (getHeight() - 40);
              
              displayBTree(g, bTree.getRoot(), x, y, 1);
          }
@@ -84,26 +84,23 @@ public class BTreePanel extends JPanel {
           drawDataInCircle(g, "" + node.dData, x, y, 24);
       }*/
 
-      print("leftChild is null: " + (node.leftChild == null));
+      drawCenteredCircle(g, x, y, 60);
+      drawDataInCircle(g, "" + node.dData, x, y, 60);
       
       if (node.leftChild != null)
-      {
-          print("in leftChild loop");
-          drawCenteredCircle(g, x, y, 60);
-          drawLeftChildLine(g, x, y);
-          drawRightChildLine(g, x, y);
-          drawDataInCircle(g, "" + node.dData, x, y, 60);
-          displayBTree(g, (DataNode) node.leftChild, x / 2, y + 30, ++level);
+      {   
+          int newCenterX = x - (x /2);
+          int newCenterY = y + 60;
+          drawLeftChildLine(g, x, y, newCenterX, newCenterY);
+          displayBTree(g, (DataNode) node.leftChild, newCenterX, newCenterY, ++level);
       }
       
       if (node.rightChild != null)
       {
-          print("in rightChild loop");
-          drawCenteredCircle(g, x, y, 24);
-          drawLeftChildLine(g, x, y);
-          drawRightChildLine(g, x, y);
-          drawDataInCircle(g, "" + node.dData, x, y, 24);
-          displayBTree(g, (DataNode) node.rightChild, x / 2, y + 30, ++level);
+          int newCenterX = x - (x /2);
+          int newCenterY = y + 60;
+          drawRightChildLine(g, x, y, newCenterX, newCenterY);
+          displayBTree(g, (DataNode) node.rightChild, newCenterX, newCenterY, ++level);
       }
   }
   
@@ -122,14 +119,18 @@ public class BTreePanel extends JPanel {
         g.fillOval(x, y, d, d);
     }
   
-  public void drawLeftChildLine(Graphics g, int circleCenterX, int circleCenterY)
+  public void drawLeftChildLine(Graphics g, int circleCenterX, int circleCenterY, int circle2CenterX, int circle2CenterY)
   {
-      g.drawLine(circleCenterX, circleCenterY, circleCenterX - (getWidth() / 4), circleCenterY + (getHeight() / 4));
+      g.setColor(Color.BLUE);
+      //g.drawLine(circleCenterX, circleCenterY, circleCenterX - (getWidth() / 4), circleCenterY + (getHeight() / 4));
+      g.drawLine(circleCenterX, circleCenterY, circle2CenterX, circle2CenterY);
   }
   
-   public void drawRightChildLine(Graphics g, int circleCenterX, int circleCenterY)
+   public void drawRightChildLine(Graphics g, int circleCenterX, int circleCenterY, int circle2CenterX, int circle2CenterY)
   {
-      g.drawLine(circleCenterX, circleCenterY, circleCenterX + (getWidth() / 4), circleCenterY + (getHeight() / 4));
+      g.setColor(Color.BLUE);
+      //g.drawLine(circleCenterX, circleCenterY, circleCenterX + (getWidth() / 4), circleCenterY + (getHeight() / 4));
+      g.drawLine(circleCenterX, circleCenterY, circle2CenterX, circle2CenterY);
   }
    
    public void drawDataInCircle(Graphics g, String string, int x, int y, int d)

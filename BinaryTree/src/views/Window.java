@@ -33,7 +33,7 @@ public class Window extends JFrame implements ActionListener {
     private JTextField infield;
     private JPanel northPanel;
     private BTreePanel centerPanel;
-    private static final int WINWIDTH = 1000;
+    private static final int WINWIDTH = 1500;
     private static final int WINHEIGHT = 800;
     /*   UNCOMMENT WHEN YOU HAVE THE TREE CODE */
     private BinaryTree theTree = new BinaryTree();

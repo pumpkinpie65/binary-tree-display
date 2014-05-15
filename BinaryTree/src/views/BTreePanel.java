@@ -24,6 +24,8 @@ public class BTreePanel extends JPanel {
 
     BinaryTree bTree;
     
+    int CIRCLE_DIAMETER = 40;
+    
     public static void main(String[] args) {
             Window tpo = new Window();
 
@@ -67,14 +69,14 @@ public class BTreePanel extends JPanel {
          if (bTree != null)
          {
             int x = getWidth() / 2;
-            int y =  getHeight() - (getHeight() - 40);
+            int y =  getHeight() - (getHeight() - CIRCLE_DIAMETER);
              
-             displayBTree(g, bTree.getRoot(), x, y);
+             displayBTree(g, bTree.getRoot(), x, y, 1);
          }
          
   }
   
-  public void displayBTree(Graphics g, DataNode node, int x, int y)
+  public void displayBTree(Graphics g, DataNode node, int x, int y, int level)
   {
 
       print("node dData: " + node.dData);
@@ -82,23 +84,23 @@ public class BTreePanel extends JPanel {
       //print("leftChild is null: " + (node.leftChild == null));
       //print("rightChild is null: " + (node.rightChild == null));
       
-      drawCenteredCircle(g, x, y, 60);
-      drawDataInCircle(g, "" + node.dData, x, y, 60);
+      drawCenteredCircle(g, x, y, CIRCLE_DIAMETER);
+      drawDataInCircle(g, "" + node.dData, x, y, CIRCLE_DIAMETER);
       
       if (node.leftChild != null)
       {   
-          int newCenterX = x - (x /2);
+          int newCenterX = x - ((int) (x /Math.pow(2.0, ((double)level))));
           int newCenterY = y + 60;
           drawLeftChildLine(g, x, y, newCenterX, newCenterY);
-          displayBTree(g, (DataNode) node.leftChild, newCenterX, newCenterY);
+          displayBTree(g, (DataNode) node.leftChild, newCenterX, newCenterY, (level + 1));
       }
       
       if (node.rightChild != null)
       {
-          int newCenterX = x + (x /2);
+          int newCenterX = x + ((int) (x /Math.pow(2.0, ((double)level)))); //fix this
           int newCenterY = y + 60;
           drawRightChildLine(g, x, y, newCenterX, newCenterY);
-          displayBTree(g, (DataNode) node.rightChild, newCenterX, newCenterY);
+          displayBTree(g, (DataNode) node.rightChild, newCenterX, newCenterY, (level + 1));
       }
   }
   

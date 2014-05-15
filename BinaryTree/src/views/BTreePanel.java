@@ -83,22 +83,20 @@ public class BTreePanel extends JPanel {
           drawRightChildLine(g, x, y);
           drawDataInCircle(g, "" + node.dData, x, y, 24);
       }*/
-      
-      //need to do inOrder traversal
-      
+
       print("leftChild is null: " + (node.leftChild == null));
       
-      while (node.leftChild != null)
+      if (node.leftChild != null)
       {
           print("in leftChild loop");
-          drawCenteredCircle(g, x, y, 24);
+          drawCenteredCircle(g, x, y, 60);
           drawLeftChildLine(g, x, y);
           drawRightChildLine(g, x, y);
-          drawDataInCircle(g, "" + node.dData, x, y, 24);
+          drawDataInCircle(g, "" + node.dData, x, y, 60);
           displayBTree(g, (DataNode) node.leftChild, x / 2, y + 30, ++level);
       }
       
-      while (node.rightChild != null)
+      if (node.rightChild != null)
       {
           print("in rightChild loop");
           drawCenteredCircle(g, x, y, 24);

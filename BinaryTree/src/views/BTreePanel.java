@@ -69,21 +69,19 @@ public class BTreePanel extends JPanel {
             int x = getWidth() / 2;
             int y =  getHeight() - (getHeight() - 40);
              
-             displayBTree(g, bTree.getRoot(), x, y, 1);
+             displayBTree(g, bTree.getRoot(), x, y);
          }
          
   }
   
-  public void displayBTree(Graphics g, DataNode node, int x, int y, int level)
+  public void displayBTree(Graphics g, DataNode node, int x, int y)
   {
-      /*if (level == 1)
-      {
-          drawCenteredCircle(g, x, y, 24);
-          drawLeftChildLine(g, x, y);
-          drawRightChildLine(g, x, y);
-          drawDataInCircle(g, "" + node.dData, x, y, 24);
-      }*/
 
+      print("node dData: " + node.dData);
+      print("x: " + x + " y: " + y);
+      //print("leftChild is null: " + (node.leftChild == null));
+      //print("rightChild is null: " + (node.rightChild == null));
+      
       drawCenteredCircle(g, x, y, 60);
       drawDataInCircle(g, "" + node.dData, x, y, 60);
       
@@ -92,15 +90,15 @@ public class BTreePanel extends JPanel {
           int newCenterX = x - (x /2);
           int newCenterY = y + 60;
           drawLeftChildLine(g, x, y, newCenterX, newCenterY);
-          displayBTree(g, (DataNode) node.leftChild, newCenterX, newCenterY, ++level);
+          displayBTree(g, (DataNode) node.leftChild, newCenterX, newCenterY);
       }
       
       if (node.rightChild != null)
       {
-          int newCenterX = x - (x /2);
+          int newCenterX = x + (x /2);
           int newCenterY = y + 60;
           drawRightChildLine(g, x, y, newCenterX, newCenterY);
-          displayBTree(g, (DataNode) node.rightChild, newCenterX, newCenterY, ++level);
+          displayBTree(g, (DataNode) node.rightChild, newCenterX, newCenterY);
       }
   }
   

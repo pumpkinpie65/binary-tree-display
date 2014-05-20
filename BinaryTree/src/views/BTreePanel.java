@@ -66,8 +66,9 @@ public class BTreePanel extends JPanel {
          drawLeftChildLine(g, x, y);
          drawRightChildLine(g, x, y);
          */
-         if (bTree != null)
+         if (bTree != null && bTree.getRoot() != null)
          {
+             print("width: " + getWidth());
             int x = getWidth() / 2;
             int y =  getHeight() - (getHeight() - CIRCLE_DIAMETER);
              
@@ -79,13 +80,15 @@ public class BTreePanel extends JPanel {
   public void displayBTree(Graphics g, DataNode node, int x, int y, int level)
   {
 
-      print("node dData: " + node.dData);
+      //print("node dData: " + node.dData);
+      print("node key: " + node.key);
+      print("level: " + level);
       print("x: " + x + " y: " + y);
       //print("leftChild is null: " + (node.leftChild == null));
       //print("rightChild is null: " + (node.rightChild == null));
       
       drawCenteredCircle(g, x, y, CIRCLE_DIAMETER);
-      drawDataInCircle(g, "" + node.dData, x, y, CIRCLE_DIAMETER);
+      drawDataInCircle(g, "" + node.key, x, y, CIRCLE_DIAMETER);
       
       if (node.leftChild != null)
       {   
@@ -135,7 +138,7 @@ public class BTreePanel extends JPanel {
    
    public void drawDataInCircle(Graphics g, String string, int x, int y, int d)
    {
-       x = x - (d / 2);
+       x = x - (d / 4);
        //y = y - d;
        y = y + (d / 4);
        g.setColor(Color.BLACK);

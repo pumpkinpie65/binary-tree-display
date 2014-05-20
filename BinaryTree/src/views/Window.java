@@ -90,7 +90,7 @@ public class Window extends JFrame implements ActionListener {
           theTree.insert(97, 1.5);
           theTree.displayTree();*/
            
-           theTree.insert(50, 50.0);
+          theTree.insert(50, 50.0);
           theTree.insert(25, 25.0);
           theTree.insert(75, 75.0);
           theTree.insert(12, 12.0);
@@ -125,6 +125,7 @@ public class Window extends JFrame implements ActionListener {
                     /*   UNCOMMENT WHEN YOU HAVE THE TREE CODE
                     theTree.insert(Integer.parseInt(infield.getText()),2.1);
                     */
+                 theTree.insert(Integer.parseInt(infield.getText()),2.1);
                     repaint();
              }
 

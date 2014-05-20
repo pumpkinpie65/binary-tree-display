@@ -45,27 +45,7 @@ public class BTreePanel extends JPanel {
   public void paintComponent (Graphics g) {
     //
          g.setFont(Fonts.plainfont);
-         //g.drawString("I am paint",20,30);    //I think I'm done with this
-         /*   UNCOMMENT WHEN YOU WANT TO DISPLAY TREE TO DOS SCREEN
-         theTree.displayTree();
-        */
 
-        /*   UNCOMMENT WHEN YOU HAVE THE GUI TREE CODE
-         theTree.displayTree(g,theTree.getRoot(),WINWIDTH/2,80, 1);
-        */
-         
-         //g.drawOval(getWidth() / 2, getHeight() - (getHeight() - 10), 20, 20);
-         
-         /*
-         MY STUFF
-         
-         int x = getWidth() / 2;
-         int y =  getHeight() - (getHeight() - 20);
-         int diameter = 20;
-         drawCenteredCircle(g, x, y, diameter);
-         drawLeftChildLine(g, x, y);
-         drawRightChildLine(g, x, y);
-         */
          if (bTree != null && bTree.getRoot() != null)
          {
              print("width: " + getWidth());
@@ -92,15 +72,42 @@ public class BTreePanel extends JPanel {
       
       if (node.leftChild != null)
       {   
-          int newCenterX = x - ((int) (x /Math.pow(2.0, ((double)level))));
+          int newCenterX;
+          
+          if (x > getWidth() / 2)
+          {
+              double divisor = Math.pow(2.0, ((double)level));
+              int dividend = x - (getWidth() / 2);
+              int xOffset = (int) (dividend / divisor);
+              
+              newCenterX = x - xOffset; 
+          }
+          else
+          {
+              newCenterX = x - ((int) (x /Math.pow(2.0, ((double)level))));
+          }
+          
           int newCenterY = y + 60;
           drawLeftChildLine(g, x, y, newCenterX, newCenterY);
           displayBTree(g, (DataNode) node.leftChild, newCenterX, newCenterY, (level + 1));
       }
       
       if (node.rightChild != null)
-      {
-          int newCenterX = x + ((int) (x /Math.pow(2.0, ((double)level)))); //fix this
+      {          
+          int newCenterX;
+          if (x > getWidth() / 2)
+          {
+              double divisor = Math.pow(2.0, ((double)level));
+              int dividend = x - (getWidth() / 2);
+              int xOffset = (int) (dividend / divisor);
+              
+              newCenterX = x + xOffset; 
+          }
+          else
+          {
+              newCenterX = x + ((int) (x /Math.pow(2.0, ((double)level))));
+          }
+          
           int newCenterY = y + 60;
           drawRightChildLine(g, x, y, newCenterX, newCenterY);
           displayBTree(g, (DataNode) node.rightChild, newCenterX, newCenterY, (level + 1));
@@ -118,28 +125,24 @@ public class BTreePanel extends JPanel {
         x = x-(d/2);
         y = y-(d/2);
         g.setColor(Color.BLUE);
-        //g.drawOval(x,y,d,d);
         g.fillOval(x, y, d, d);
     }
   
   public void drawLeftChildLine(Graphics g, int circleCenterX, int circleCenterY, int circle2CenterX, int circle2CenterY)
   {
       g.setColor(Color.BLUE);
-      //g.drawLine(circleCenterX, circleCenterY, circleCenterX - (getWidth() / 4), circleCenterY + (getHeight() / 4));
       g.drawLine(circleCenterX, circleCenterY, circle2CenterX, circle2CenterY);
   }
   
    public void drawRightChildLine(Graphics g, int circleCenterX, int circleCenterY, int circle2CenterX, int circle2CenterY)
   {
       g.setColor(Color.BLUE);
-      //g.drawLine(circleCenterX, circleCenterY, circleCenterX + (getWidth() / 4), circleCenterY + (getHeight() / 4));
       g.drawLine(circleCenterX, circleCenterY, circle2CenterX, circle2CenterY);
   }
    
    public void drawDataInCircle(Graphics g, String string, int x, int y, int d)
    {
        x = x - (d / 4);
-       //y = y - d;
        y = y + (d / 4);
        g.setColor(Color.BLACK);
        g.drawString(string, x, y);

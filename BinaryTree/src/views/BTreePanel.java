@@ -24,7 +24,7 @@ public class BTreePanel extends JPanel {
 
     BinaryTree bTree;
     
-    int CIRCLE_DIAMETER = 40;
+    int CIRCLE_DIAMETER = 26;
     
     public static void main(String[] args) {
             Window tpo = new Window();
